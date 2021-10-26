@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InPay | Doğrudan Ödeme</title>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,300" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&amp;display=swap" rel="stylesheet">
+    <style>
+        body{
+            background: white;
+            padding: 0;
+            margin: 0;
+            width: 100%;
+        }
+        .title{
+            font-family: "Open Sans";
+            font-size: 2rem;
+        }
+        .subTitle{
+            font-family: "Open Sans";
+            font-size: 1rem;
+        }
+        .label{
+            font-family: "Open Sans";
+            font-size: 12px;
+            color: gray;
+        }
+        .shadowedInput{
+            border: none;
+            outline: none;
+            border-radius: 5px;
+            width: 50%;
+            height: 40px;
+            font-size: 1rem;
+            text-indent: 1rem;
+            box-shadow: 0 1px 2px 0 rgb(60 64 67 / 30%), 0 2px 6px 2px rgb(60 64 67 / 15%);
+            --webkit-appearance: none
+        }
+        .formBox{
+            margin-top: 8%;
+            margin-left: 15%;
+        }
+        .formButton{
+            border: none;
+            outline: none;
+            background: turquoise;
+            border-radius: 5px;
+            width: 50%;
+            height: 40px;
+            font-size: 1rem;
+            color: black;
+
+        }
+        label input {
+            display: none;
+        }
+
+        label span {
+            height: 10px;
+            width: 10px;
+            border: 1px solid grey;
+            display: inline-block;
+            position: relative;
+        }
+
+
+        [type=checkbox]:checked + span:before {
+            content: '\2714';
+            position: absolute;
+            top: -5px;
+            left: 0;
+        }
+        a{
+            color: turquoise;
+        }
+    </style>
+</head>
+<body>
+    <form class="formBox" method="post" enctype="multipart/form-data">
+        <h1 class="title">Doğrudan ödeme talebi</h1>
+        <p class="subTitle" style="width: 75%;">Bir organizasyon hesabına sahip olduğunuz için banka bilgilerinizi girerek doğrudan ödeme alabilirsiniz. Ödeme almak için BTC Cüzdan numarası, IBAN veya Hesap No girebilirsiniz. Bilgileriniz gönderildikten sonra hesap sahibi ile iletişime geçilerek onay alınacaktır.</p>
+        <br>
+        <p class="label">Ad Soyad</p>
+        <input class="shadowedInput" type="text" name="fullname">
+        <br>
+        <br>
+        <p class="label">TL Cinsinden Miktar</p>
+        <input class="shadowedInput" type="text" name="amount">
+        <br>
+        <br>
+        <p class="label">Cüzdan Adresi veya IBAN veya Hesap No</p>
+        <input class="shadowedInput" type="text" name="bank_info">
+        <br>
+        <br>
+        <input class="formButton" type="submit" value="Kaydet">
+        <br>
+        <br>
+    </form>
+</body>
+</html>

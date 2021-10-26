@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InPay</title>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,300" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&amp;display=swap" rel="stylesheet">
+    <style>
+        body{
+            background: white;
+            padding: 0;
+            margin: 0;
+            width: 100%;
+        }
+        .title{
+            font-family: "Open Sans";
+            font-size: 2rem;
+        }
+        .subTitle{
+            font-family: "Open Sans";
+            font-size: 1rem;
+        }
+        .label{
+            font-family: "Open Sans";
+            font-size: 12px;
+            color: gray;
+        }
+        .shadowedInput{
+            border: none;
+            outline: none;
+            border-radius: 5px;
+            width: 50%;
+            height: 40px;
+            font-size: 1rem;
+            text-indent: 1rem;
+            box-shadow: 0 1px 2px 0 rgb(60 64 67 / 30%), 0 2px 6px 2px rgb(60 64 67 / 15%)
+        }
+        .formBox{
+            margin-top: 8%;
+            margin-left: 15%;
+        }
+        .formButton{
+            border: none;
+            outline: none;
+            background: turquoise;
+            border-radius: 5px;
+            width: 50%;
+            height: 40px;
+            font-size: 1rem;
+            color: black;
+
+        }
+        label input {
+            display: none;
+        }
+
+        label span {
+            height: 10px;
+            width: 10px;
+            border: 1px solid grey;
+            display: inline-block;
+            position: relative;
+        }
+
+
+        [type=checkbox]:checked + span:before {
+            content: '\2714';
+            position: absolute;
+            top: -5px;
+            left: 0;
+        }
+        a{
+            color: turquoise;
+        }
+    </style>
+</head>
+<body>
+    <form class="formBox" method="post" enctype="multipart/form-data">
+        <h1 class="title">InPay Hesabı Oluştur</h1>
+        <p class="subTitle">E-Posta adresi ile hesap oluştur.</p>
+        <br>
+        <p class="label">E-Posta</p>
+        <input class="shadowedInput" type="text" name="email">
+        <br>
+        <br>
+        <p class="label">Şifre</p>
+        <input class="shadowedInput" type="password" name="password">
+        <br>
+        <br>
+        <label>
+            <input type='checkbox' name="organisation">
+            <span></span>
+            <p class="label">Kurumsal hesap</p>
+        </label>
+        <br>
+        <label>
+            <input type='checkbox' name="terms_of_use">
+            <span></span>
+            <p class="label"><a href="/terms">Kullanım koşullarını</a> okudum, anladım ve kabul ediyorum.</p>
+        </label>
+        <br>
+        <br>
+        <input class="formButton" type="submit" value="Create Account">
+        <br>
+        <br>
+        <p class="label">Zaten hesabınız var mı?</p><a href="/login">Giriş Yapın</a>
+    </form>
+</body>
+</html>

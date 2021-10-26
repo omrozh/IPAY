@@ -1,0 +1,16 @@
+<html>
+  <head>
+    <title>Payment Scanner | InPay</title>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <script type="text/javascript" src="https://rawgit.com/schmich/instascan-builds/master/instascan.min.js"></script>
+    <script type="text/javascript" src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
+  </head>
+  <body>
+    <center style="font-family: Helvetica; margin-top: 25%; color: gray; font-size: 2rem">
+      <h1>Click to scan</h1>
+    </center>
+    <form method="post" enctype="multipart/form-data" id="mainForm">
+      <input type="file" name="file" style="width: 100%; height: 100%; position: fixed; top: 0; left: 0; opacity: 0" capture=camera onchange="document.getElementById('mainForm').submit()">
+    </form>
+  </body>
+</html>
