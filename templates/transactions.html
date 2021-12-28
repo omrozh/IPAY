@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ödeme Geçmişi</title>
+    <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/4246ac988c.js" crossorigin="anonymous"></script>
+    <style>
+        .transaction{
+             font-family: 'Varela Round', sans-serif;
+             font-size: 2rem;
+	     display: flex;
+	     flex-direction: column-reverse;
+             width: 100%;
+        }
+        .outlinedButton{
+            border: 2px solid green;
+            background-color: white;
+            color: green;
+            padding: 14px 28px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 15px;
+        }
+    </style>
+</head>
+<body style="padding: 0; margin: 0">
+    <center>
+        <h1 style="font-family: 'Varela Round', sans-serif; color: rgb(60, 120, 177); font-size: 3rem;">InPay</h1>
+        <button class="outlinedButton" onclick="window.location = '/'">Ana Sayfa</button>
+        <button class="outlinedButton" onclick="window.location = 'mailto:info@inpay-tr.com'">İletişim</button>
+        <h2 style="font-family: 'Varela Round', sans-serif;">Son Ödemeler</h2>
+        <p style="background-color: rgb(60, 120, 177); border-radius: 15px; color: white; font-family: 'Varela Round', sans-serif; width: 250px; height: 25px; padding-top: 5px">TL Bakiye Hareketleri</p>
+        <div class="transaction">
+           {% for i in range(transactions_length) %}
+   	    {% if i % 2 == 0 %}
+            <i class="fas fa-money-check"></i>
+            {{ transactions[i] }}
+            <span class="transaction" style="color: red; float: right">{{ transactions[i + 1] }}₺</span>
+            <br>
+            <br>
+            <br>
+	    {% endif %}
+        {% endfor %}
+        </div>
+    </center>
+</body>
+</html>

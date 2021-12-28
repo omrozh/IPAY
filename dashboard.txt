@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/4246ac988c.js" crossorigin="anonymous"></script>
+    <title>InPay | Home</title>
+    <style>
+        .imageFrame{
+            width: 90%;
+            height: 350px;
+            border-radius: 5px;
+            background-color: white;
+            margin-top: 0;
+            margin-left: 0;
+            border: none;
+            box-shadow: 0 1px 2px 0 rgb(60 64 67 / 30%), 0 2px 6px 2px rgb(60 64 67 / 15%);
+        }
+        p{
+            color: gray;
+            font-size: 1rem;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        .navbar{
+            width: 100%;
+            color: gray;
+            margin-bottom: 0%;
+            position: fixed;
+            background-color: white;
+            box-shadow: 0 8px 12px -12px black;
+            z-index:10;
+            top: 0;
+        }
+        body{
+            padding: 0;
+            margin: 0;
+            width: 100%;
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #f8f8fd;
+            background-size: 100vw 100vh;
+        }
+        .plus-button{
+            position: absolute;
+             top: 50px;
+             left: 25px;
+             box-shadow: 0 1px 2px 0 rgb(60 64 67 / 30%), 0 2px 6px 2px rgb(60 64 67 / 15%);
+             background: transparent;
+             border-radius: 0.5rem;
+        }
+    </style>
+<script src="https://kit.fontawesome.com/4246ac988c.js" crossorigin="anonymous"></script>
+</head>
+<body style="background-color: #1f242d">
+    <div class="plus-button">
+      <button onclick="document.location = '/create_wallet'" class="" type="button" id="dropdownMenuButton" style="background: none; border: none" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <i style="color: white; font-size: 2rem; margin-top: 5px" class="fas fa-plus" aria-hidden="true"></i>
+      </button>
+    </div>
+    {% if is_organisation %}
+        <p style="top: 50px; right: 100px; cursor: pointer; position: absolute;" onclick="document.location = '/transaction_request'">Ödeme Al</p>
+    {% endif %}
+	<p style="top: 75px; right: 100px; cursor: pointer; position: absolute;" onclick="document.location = '/logout'">Çıkış Yap</p>
+	<p style="top: 100px; right: 100px; cursor: pointer; position: absolute;" onclick="document.location = '/logout'">{{ email }}</p>
+
+    <center style="width: 100%; margin-top: 10%;" id="mainDiv">
+	{% for i in range(wallets_length) %}
+    {% if i % 2 == 0 %}
+        <button class="imageFrame">
+            <br>
+
+            {% if is_organisation %}
+                        <h1 onclick="alert('Cüzdan Adresi: {{ wallets[i].real_wallet_name }} / API Ödeme Alma Adresi: {{ wallets[i].wallet_id }}')" style="color: gray"><i class="fas fa-wallet" aria-hidden="true" style="color: gray; font-size: 2rem;"></i><br>{{ wallets[i + 1]  * current_price }} ₺</h1>
+            {% else %}
+                        <h1 onclick="alert('Cüzdan Adresi: {{ wallets[i].real_wallet_name }}')" style="color: gray"><i class="fas fa-wallet" aria-hidden="true" style="color: gray; font-size: 2rem;"></i><br>{{ wallets[i + 1]  * current_price }} ₺</h1>
+            {% endif %}
+
+                <p style="text-decoration: underline; cursor: pointer" onclick="document.location = '/receive/{{ wallets[i].wallet_id }}'">Ödeme al</p>
+                <p style="text-decoration: underline; cursor: pointer" onclick="document.location = '/pay/dfsmivezpgoqdfqkeyurykpgqlmksaideldzpnfuorbqhxoiqiaktxwnciagqhrv'">Ödeme yap</p>
+        <p style="text-decoration: underline; cursor: pointer" onclick="document.location = '/deposit/{{ wallets[i].real_wallet_name }}'">Kart ile yükle</p>
+        </button>
+<br>
+<br>
+    {% endif %}
+{% endfor %}
+</center>
+    <script>
+        var is_mobile = !!navigator.userAgent.match(/iphone|android|blackberry/ig) || false;
+        if(is_mobile){
+            document.getElementById("mainDiv").style.marginTop = "40%"
+            document.body.style.backgroundImage = "none";
+        }
+    </script>
+</body>
+</html>

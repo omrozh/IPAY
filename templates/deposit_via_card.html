@@ -1,0 +1,168 @@
+<style>
+    .imageFrame{
+            width: 90%;
+            height: 20%;
+            border-radius: 25px;
+            background-color: rgb(215, 184, 67);
+            margin-top: 0;
+            margin-left: 5%;
+            border: none;
+            box-shadow: 0 1px 2px 0 rgb(60 64 67 / 30%), 0 2px 6px 2px rgb(60 64 67 / 15%);
+        }
+</style>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InPay | Doğrudan Ödeme</title>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,300" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&amp;display=swap" rel="stylesheet">
+    <style>
+        body{
+            background: white;
+            padding: 0;
+            margin: 0;
+            width: 100%;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        .title{
+            font-family: "Open Sans";
+            font-size: 2rem;
+        }
+        .subTitle{
+            font-family: "Open Sans";
+            font-size: 1rem;
+        }
+        .label{
+            font-family: "Open Sans";
+            font-size: 12px;
+            color: gray;
+        }
+        .shadowedInput{
+            border: none;
+            outline: none;
+            border-radius: 5px;
+            width: 50%;
+            height: 40px;
+            font-size: 1rem;
+            text-indent: 1rem;
+            box-shadow: 0 1px 2px 0 rgb(60 64 67 / 30%), 0 2px 6px 2px rgb(60 64 67 / 15%);
+            --webkit-appearance: none
+        }
+        .formBox{
+            margin-top: 8%;
+            margin-left: 15%;
+        }
+        .formButton{
+            border: none;
+            outline: none;
+            background: turquoise;
+            border-radius: 5px;
+            width: 50%;
+            height: 40px;
+            font-size: 1rem;
+            color: black;
+
+        }
+        label input {
+            display: none;
+        }
+
+        label span {
+            height: 10px;
+            width: 10px;
+            border: 1px solid grey;
+            display: inline-block;
+            position: relative;
+        }
+
+
+        [type=checkbox]:checked + span:before {
+            content: '\2714';
+            position: absolute;
+            top: -5px;
+            left: 0;
+        }
+        a{
+            color: turquoise;
+        }
+        span{
+            color: white;
+            margin-left: 5%;
+        }
+    </style>
+</head>
+<body>
+    <form class="formBox" method="post" enctype="multipart/form-data">
+        <h1 class="title">Kart ile yükleme yapın</h1>
+        <p class="subTitle" style="width: 75%;">Kart bilgilerinizi girerek cüzdanınıza para ekleyin.</p>
+        <br>
+        <p class="label">TL Cinsinden Yüklenecek Miktar</p>
+        <div id="buttons">
+            <div style="width: 20%; height: 2%; background: none; font-size: 10px; text-align: center; text-indent: 0; float: left; cursor: pointer;" class="shadowedInput" onclick="setMoney(50, this)">50₺ + 5₺ Hediye</div>
+            <div style="width: 20%; height: 2%; background: none; font-size: 10px; text-align: center; text-indent: 0; float: left; margin-left: 5px; cursor: pointer;" class="shadowedInput" onclick="setMoney(100, this)">100₺ + 10₺ Hediye</div>
+            <div style="width: 20%; height: 2%; background: none; font-size: 10px; text-align: center; text-indent: 0; float: left; margin-left: 5px; cursor: pointer;" class="shadowedInput" onclick="setMoney(200, this)">200₺ + 25₺ Hediye</div>
+            <div style="width: 20%; height: 2%; background: none; font-size: 10px; text-align: center; text-indent: 0; float: left; margin-left: 5px; cursor: pointer;" onclick="customVisibility()" class="shadowedInput">Diğer</div>
+        </div>
+        <input class="shadowedInput" stype="text" name="amount" id="customInput" style="display: none;">
+        <br>
+        <p class="label">Kart Numarası</p>
+        <input id="card_num" class="shadowedInput" autocomplete="cc-number" name="card_number">
+        <br>
+        <br>
+        <p class="label">3 Haneli Kart Güvenlik Kodu</p>
+        <input id="cvc" class="shadowedInput" type="text" name="card_cvc">
+        <br>
+        <br>
+        <p class="label">Son Kullanma Tarihi (Arada / olacak şekilde)</p>
+        <input id="date" class="shadowedInput" type="text" name="card_date">
+        <br>
+        <br>
+        <input class="formButton" type="submit" value="Ödeme Yap">
+        <br>
+        <br>
+    </form>
+    <p style="margin-left: 15%; cursor: pointer;" onclick="setCardVisibility()">View/Hide Cards</p>
+    <div id="cards" style="display: none">
+        {% for i in user_cards %}
+            <center class="imageFrame" onclick="setInputs('{{i.card_number}}', '{{ i.cvc }}', '{{ i.date }}')">
+                <br>
+                <h1 style="color: white; text-align: center; font-size: 1rem; margin-top: 2%;">{{ i.card_number }}</h1>
+                <span style="margin-left: 0;">{{ i.cvc }}</span>
+                <span>{{ i.date }}</span>
+            </center>
+        <br>
+        {% endfor %}
+    </div>
+
+    <script>
+        function setCardVisibility(){
+            cards_div = document.getElementById("cards")
+            if(cards_div.style.display != "none"){
+                cards_div.style.display = "none"
+            }else{
+                cards_div.style.display = "block"
+            }
+        }
+        function customVisibility(){
+            document.getElementById('customInput').style.display = 'block';
+            document.getElementById('buttons').style.display = 'none';
+        }
+        function setInputs(card_num, cvc, date){
+            document.getElementById("card_num").value = card_num
+            document.getElementById("cvc").value = cvc
+            document.getElementById("date").value = date
+        }
+        function setMoney(money, element){
+            buttons_all = document.getElementById("buttons").getElementsByClassName("shadowedInput")
+            for(i = 0; i < buttons_all.length; i++){
+                buttons_all[i].style.background = "none";
+            }
+            document.getElementById("customInput").value = money
+            element.style.background = "turquoise";
+        }
+    </script>
+</body>
+</html>

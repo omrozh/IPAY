@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Docs | InPay</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com"> 
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
+<link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
+
+    <style>
+        body{
+            color: #4f566b;
+            background-color: #f8f8f8;
+            font-family: "Varela Round";
+        }
+        .mainDiv{
+            width: 90%;
+            margin: 5%;
+        }
+        .sideDiv{
+            float: left;
+            width: 60%;
+            min-height: 400px;
+        }
+        .codeDiv{
+            background-color: #2a2f45;
+            border-radius: 15px;
+            float: right;
+            width: 30%;
+            height: 150px;
+            padding: 15px;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="mainDiv">
+        <h1 style="font-size: 3rem;">InPay - Entegrasyon</h1>
+        <p>InPay entegrasyonu HTTPS POST metodu üzerinden çalışmaktadır. Entegrasyon güvenlikten ödün vermeden kolaylaştırılmıştır. Entegrasyon sürecinde teknik destek verilmektedir. Network Issuing ve Payroll ürünleri için öncelikle bizimle product@inpay-tr.com adresinden iletişime geçmeniz gerekmektedir. </p>
+        <div class="sideDiv">
+            <h1>Charge Objesi</h1>
+            <p>InPay API'ı istekleri doğrulamak için Wallet API Anahtarlarını kullanır. API Anahtarlarını <a href="/dashboard" style="color: blue;">hesap ekranından</a> görüntüleyebilirsiniz. Hesap anahtarları halka açık anahtar mekanizması ile çalıştığından hesap anahtarlarınızı güvenle paylaşabilirsiniz. Bir hesap adına ödeme almak için o hesabın sahibi olmanıza gerek yoktur.</p>
+            <p>Wallet API anahtarlarınız gerçek Wallet adresleriniz değildir, halka açık olarak paylaşabilir, geliştiricilerinize veya satış yaptığınız pazar yerlerine gönderebilirsiniz. Bu sayede bu sistemler ile pazaryeri çözümleri ile adınıza ödeme alınabilir ve ödemelerinizin anında hesabınıza geçmesini sağlayabilirsiniz.</p>
+            <p>Wallet API anahtarlarınızı Charge objesi oluştururken ödeme alan hesap numarası kısmına yazmanız gerekmektedir.</p>
+        </div>
+        <div class="codeDiv" style="margin-top: 5%;">
+            <span style="color: violet;">from</span> inpay <span style="color: violet;">import</span> Charge
+            <br>
+            <br>
+            c = Charge(ödeme_alan_hesap_api_key, ödeme_yapan_hesap_no)
+        </div>
+
+        <br style="clear: both;">
+        <hr style="clear: both;">
+        <br style="clear: both;">
+
+        <div class="sideDiv">
+            <h1 style="margin-top: 10%;">Basit Ödeme Alma</h1>
+            <p>InPay Türk Lirası endeksli çalışır, Charge objesini oluşturduktan sonra, charge metodunu ödeme miktarını tl cinsinden float türünde yazarak ödeme alabilirsiniz</p>
+        </div>
+        <div class="codeDiv" style="margin-top: 5%;">
+            c.charge(<span style="color: violet;">float</span>(amount))
+        </div>
+
+        <br style="clear: both;">
+        <hr style="clear: both;">
+        <br style="clear: both;">
+
+        <div class="sideDiv">
+            <h1>Hatalar</h1>
+            <p>InPay API lokal kodunu değiştirmediğiniz sürece hatalar ile endişelenmenize gerek yoktur. InPay API lokal kodunu gerekli ekspertize sahip olduğunuzdan emin olmadığınız sürece değiştirmeyiniz, eğer uzman bir ekibiniz mevcutsa kodu istediğiniz gibi modifiye etme hakkına sahipsiniz.</p>
+            <p>Hata bildirmek isterseniz bizimle 7/24 dev@inpay-tr.com adresi üzerinden iletişime geçebilirsiniz. En geç 24 saat içerisinde bütün maillere cevap verilecektir.</p>
+        </div>
+
+        <br style="clear: both;">
+        <hr style="clear: both;">
+        <br style="clear: both;">
+
+        <div class="sideDiv">
+            <h1 style="margin-top: 10%;">Taksitlendirme</h1>
+            <p>Taksitlendirme için standart ödemeler ile aynı Charge objesi kullanılır fakat charge metodu yerine installmentCharge metodu kullanılmalıdır.</p>
+            <p>3000 Türk Lirası ve 6 aya kadar taksitlendirme mümkündür. Taksitli ödemelerde aynı tek çekim ödemelerde olduğu gibi ödemenin tamamı satıcının hesabına anında geçer bütün ödeme InPay rezervleri tarafından AnındaKredi ile karşılanır.</p>
+        </div>
+        <div class="codeDiv" style="margin-top: 5%;">
+            c.installmentCharge(<span style="color: violet;">float</span>(aylık_ücret), <span style="color: violet;">int</span>(taksit_miktar_ay))
+        </div>
+
+        <br style="clear: both;">
+        <hr style="clear: both;">
+        <br style="clear: both;">
+        
+        <div class="sideDiv">
+            <h1>Pazaryeri Ödeme</h1>
+            <p>InPay pazaryeri ödeme çözümünü kullanarak hiçbir ek teknolojiye gerek kalmaksızın pazaryeri komisyonunuzu aldıktan sonra satıcılarınıza dakikalar içerisinde ödeme yapabilirisiniz.</p>
+            <p>InPay pazaryeri sistemi 2 adet ödeme isteği oluşturarak ödemenin sizin belirlediğiniz komisyon kadarını sizin hesabınıza, kalanını satıcının hesabına gönderir. Böylece hem ödeme yapma uğraşından kurtulursunuz hem de satıcılarınız 3-4 hafta gibi uzun sürelerin yerine sadece 2 dakika içerisinde ödemeleri hesabına alır. İadeler 30 gün içerisinde yapılabilmektedir ve InPay taradından güvence altına alınmıştır.</p>
+            <p>Pazaryeri sisteminde aynı Charge objesinin yanı sıra marketplaceCharge metodu kullanılır.</p>
+        </div>
+        <div class="codeDiv" style="margin-top: 5%;">
+            c.marketplaceCharge(<span style="color: violet;">float</span>(ücret), pazaryeri_sahibi_cüzdan_api_anahtarı, <span style="color: violet;">int</span>(komisyon_oranı))
+        </div>
+
+        <br style="clear: both;">
+        <hr style="clear: both;">
+        <br style="clear: both;">
+        
+        <div class="sideDiv">
+            <h1 style="margin-top: 10%;">Pazaryeri Taksitli Ödeme</h1>
+            <p>InPay pazaryeri ödeme sistemi ile aynı çalışma mantığına sahiptir, taksitli ödemeler için kullanılır. marketplaceInstallmentCharge metodunun uygun parametler ile çağrılması gerekmektedir.</p>
+        </div>
+        <div class="codeDiv" style="margin-top: 5%;">
+            c.marketplaceInstallmentCharge(<span style="color: violet;">float</span>(aylık_ücret), <span style="color: violet;">int</span>(taksit_miktarı), pazaryeri_sahibi_cüzdan_api_anahtarı, <span style="color: violet;">int</span>(komisyon_oranı))
+        </div>
+    </div>
+    <script>
+        if(window.innerHeight > window.innerWidth){
+            var codes = document.getElementsByClassName("codeDiv")
+            for(i = 0; i < codes.length; i++){
+                codes[i].style.width = "90%"
+            }
+        }
+    </script>
+</body>
+</html>

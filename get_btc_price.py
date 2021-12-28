@@ -9,10 +9,8 @@ def finalDolar():
 
 
 def get_price():
-    response = requests.get('https://api.coindesk.com/v1/bpi/currentprice.json')
+    response = requests.get('https://api.binance.com/api/v3/avgPrice?symbol=LTCUSDT')
     data = response.json()
 
-    print(data["time"])
-
-    return float(data["bpi"]["USD"]['rate'].replace(",", "")) * finalDolar()
+    return float(data["price"]) * finalDolar()
 

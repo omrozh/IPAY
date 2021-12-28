@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en" style="overflow-x: hidden">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>InPay Ana Sayfa</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      src="https://kit.fontawesome.com/4246ac988c.js"
+      crossorigin="anonymous"
+    ></script>
+    <style>
+      body {
+        margin: 0;
+      }
+
+      .header {
+        position: relative;
+        text-align: center;
+        background: linear-gradient(
+          60deg,
+          rgba(84, 58, 183, 1) 0%,
+          rgba(0, 172, 193, 1) 100%
+        );
+        color: white;
+      }
+      .logo {
+        width: 50px;
+        fill: white;
+        padding-right: 15px;
+        display: inline-block;
+        vertical-align: middle;
+      }
+
+      .inner-header {
+        height: 65vh;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+      }
+
+      .flex {
+     
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+      }
+
+      .waves {
+        position: relative;
+        width: 100%;
+        height: 15vh;
+        margin-bottom: -7px;
+        min-height: 100px;
+        max-height: 150px;
+      }
+
+      .content {
+        position: relative;
+        height: 20vh;
+        text-align: center;
+        background-color: white;
+      }
+
+    
+
+      .parallax > use {
+        animation: move-forever 25s cubic-bezier(0.55, 0.5, 0.45, 0.5) infinite;
+      }
+      .parallax > use:nth-child(1) {
+        animation-delay: -2s;
+        animation-duration: 7s;
+      }
+      .parallax > use:nth-child(2) {
+        animation-delay: -3s;
+        animation-duration: 10s;
+      }
+      .parallax > use:nth-child(3) {
+        animation-delay: -4s;
+        animation-duration: 13s;
+      }
+      .parallax > use:nth-child(4) {
+        animation-delay: -5s;
+        animation-duration: 20s;
+      }
+      @keyframes move-forever {
+        0% {
+          transform: translate3d(-90px, 0, 0);
+        }
+        100% {
+          transform: translate3d(85px, 0, 0);
+        }
+      }
+      /*Shrinking for mobile*/
+      @media (max-width: 768px) {
+        .waves {
+          height: 40px;
+          min-height: 40px;
+        }
+        .content {
+          height: 30vh;
+        }
+      }
+      .head-main{
+        font-size: 2rem;
+        max-width: 500px;
+      }
+      .subhead {
+        font-size: 1rem;
+        max-width: 500px;
+      }
+      .head-content-div {
+        position: absolute;
+        left: 0%;
+        width: 100%;
+        padding: 0;
+        margin: 0;
+        top: 7vh;
+      }
+      body {
+        width: 100%;
+        font-family: "Varela Round", sans-serif;
+        padding: 0;
+        margin: 0;
+        overflow-x: hidden;
+      }
+      .btn {
+        border: 2px solid black;
+        background-color: transparent;
+        color: black;
+        padding: 14px 28px;
+        font-size: 16px;
+        cursor: pointer;
+        border-radius: 15px;
+      }
+      .green {
+        border-color: #04aa6d;
+        color: #04aa6d;
+        clear: both;
+      }
+      .green:hover {
+        background-color: #04aa6d;
+        color: white;
+      }
+      nav {
+        position: absolute;
+        width: 100%;
+        height: 50px;
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <img
+        src="https://www.socialsnake.ml/45816258InPay.png"
+        style="max-width: 75px; margin-top: 10px; margin-left: 5%"
+        alt=""
+      />
+      <a
+        href="/login"
+        style="
+          position: absolute;
+          top: 15px;
+          right: 50px;
+          color: gray;
+          text-decoration: none;
+        "
+        >Giriş Yap</a
+      >
+    </nav>
+    <div class="head-content-div">
+      <div class="header">
+
+       
+        <div class="inner-header flex">
+       
+        
+        <path fill="#FFFFFF" stroke="#000000" stroke-width="10" stroke-miterlimit="10" d="M57,283" />
+        <g><path fill="#fff"
+        d="M250.4,0.8C112.7,0.8,1,112.4,1,250.2c0,137.7,111.7,249.4,249.4,249.4c137.7,0,249.4-111.7,249.4-249.4
+        C499.8,112.4,388.1,0.8,250.4,0.8z M383.8,326.3c-62,0-101.4-14.1-117.6-46.3c-17.1-34.1-2.3-75.4,13.2-104.1
+        c-22.4,3-38.4,9.2-47.8,18.3c-11.2,10.9-13.6,26.7-16.3,45c-3.1,20.8-6.6,44.4-25.3,62.4c-19.8,19.1-51.6,26.9-100.2,24.6l1.8-39.7		c35.9,1.6,59.7-2.9,70.8-13.6c8.9-8.6,11.1-22.9,13.5-39.6c6.3-42,14.8-99.4,141.4-99.4h41L333,166c-12.6,16-45.4,68.2-31.2,96.2	c9.2,18.3,41.5,25.6,91.2,24.2l1.1,39.8C390.5,326.2,387.1,326.3,383.8,326.3z" />
+        </g>
+        </svg>
+        <h1>
+          Dünya'nın en hızlı, güvenli ve masrafsız ödeme metodu.</h1>
+          <button class="btn green" onclick="document.location = '/register'">Kayıt Ol</button>
+        </div>
+        
+
+        <div>
+        <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+        viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+        <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+        <use xlink:href="#gentle-wave" x="48" y="0" fill="rgba(255,255,255,0.7" />
+        <use xlink:href="#gentle-wave" x="48" y="3" fill="rgba(255,255,255,0.5)" />
+        <use xlink:href="#gentle-wave" x="48" y="5" fill="rgba(255,255,255,0.3)" />
+        <use xlink:href="#gentle-wave" x="48" y="7" fill="#fff" />
+        </g>
+        </svg>
+        </div>
+        
+        
+        </div>
+    <div
+      style="
+        background-color: #eff6ff;
+        width: 100%;
+        height: 80%;
+        position: absolute;
+        top: 100vh;
+      "
+      id="infoDiv"
+    >
+      <div class="head-content-div" style="top: 1%">
+        <h1 class="head-main" style="max-width: 80%; margin-left: 5%; margin-top: 5%;">-%10 Kullanım ücreti</h1>
+        <p class="subhead" style="max-width: 90%; margin-left: 5%">
+          Nasıl yani? <br /><br />
+          InPay'in özel teknolojisi ile, ödemelerin aktarımının maliyeti yoktur.
+          InPay'de uluslararası para göndermenin veya kur çevriminin hiçbir
+          maliyeti yoktur. Her ödeme aldığınızda ödemenin %10'u kadar ücret
+          bonus olarak hesabınıza geçer.
+        </p>
+
+        <h1 class="head-main" style="max-width: 80%; margin-left: 5%; margin-top: %;">2 Dakikada hesabınızda</h1>
+        <p class="subhead" style="max-width: 90%; margin-left: 5%">
+          Ne kadar büyük bir ödeme aldığınızın veya Dünya'nın neresinden
+          gönderildiğinin hiçbir önemi yok, InPay ile aldığınız ödemeler 2
+          dakika içerisinde hesabınıza +%10 bonus ile birlikte geçer, isterseniz
+          dakikalar içerisinde de doğrudan banka hesabınıza aktarabilirsiniz.
+        </p>
+      </div>
+    </div>
+    <center id="qrDiv" style="position: absolute; top: 190vh; width: 100%">
+      <img
+        src="https://www.socialsnake.ml/27008002qr_pay.png"
+        style="max-width: 50vw"
+        alt=""
+      />
+      <h1 style="font-family: 'Varela Round'; width: 50vw">QR Kod ile Öde</h1>
+      <p style="font-family: 'Varela Round'; max-width: 80%">
+        InPay ile POS cihazına, karta veya banka hesabına gerek olmadan QR Kod
+        ile ödeyin ve ödeme alın. Organizasyon hesabı açarak hesaplarını ödemeye
+        kapatarak sadece ödeme alınabilir şekle getirebilir, bu şekilde pek çok
+        insan ile aynı hesabı kullanarak ödeme alabilirsiniz.
+      </p>
+    </center>
+    <div
+      id="footer"
+      style="
+        position: absolute;
+        background-color: #111;
+        color: white;
+        top: 300vh;
+        width: 100%;
+        height: 40vh;
+      "
+    >
+      <div style="margin-left: 5%">
+        <p style="color: gray; font-size: 2rem">INPAY</p>
+        <p style="font-size: 1rem; font-family: Arial, Helvetica, sans-serif">
+          MÜŞTERİ HİZMETLERİ | +90 850 441 2415
+        </p>
+        <p style="font-size: 1rem; font-family: Arial, Helvetica, sans-serif">
+          E-Mail | info@inpay-tr.com
+        </p>
+        <br />
+        <a href="/login" style="text-decoration: none; color: gray"
+          >Giriş Yap</a
+        >
+        |
+        <a style="text-decoration: none; color: gray" href="/register"
+          >Hesap Oluştur</a
+        >
+        <br />
+        <br /><a style="text-decoration: none; color: gray" href="/docs"
+          >Entegrasyon</a
+        >
+      </div>
+    </div>
+    <script>
+      if (window.innerHeight > window.innerWidth) {
+        document.getElementById("infoDiv").style.height = "100vh";
+        document.getElementById("footer").style.top = "290vh";
+        document.getElementById("infoDiv").style.top = "90vh";
+        document.getElementById("qrDiv").style.top = "210vh";
+      }
+    </script>
+  </body>
+</html>
+
