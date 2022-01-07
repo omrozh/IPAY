@@ -16,8 +16,7 @@ import datetime
 import stripe
 
 stripe_keys = {
-  'secret_key': "sk_live_51HmZthKorNA5pIqqT8NMIjs9PjVBp2q4kUikzVyuQmcbQho4Cp"
-                "WuhZGhYj1dQOnbTDOtTsGb096AFMUNUThjOrfJ00K8ieWxDJ",
+  'secret_key': "XXXXX",
   'publishable_key': "pk_live_51HmZthKorNA5pIqqr37KQQpgACAJeRmWI5EODh6D4sN14Xh"
                      "oTtwfAuiQyXyfZgaxJZ9w6h877nqUQVHITh3yKbjA00kLKfTu0R"
 }
@@ -81,7 +80,7 @@ def generate_cards_key(length):
 app = flask.Flask(__name__)
 
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///site.db"
-app.config["SECRET_KEY"] = "o3b6hSSMViGh9SwiCVX31kKEaC9+Iw2L8Whw12IdjOpv8D+Ozv+//6DrvmzcSDq4nnEPgGcyINCTqcJTlHJ64g=="
+app.config["SECRET_KEY"] = "XXXXXX"
 
 login_manager = LoginManager(app)
 
